@@ -29,3 +29,20 @@ footer {
     color: white;
     padding: 15px;
 }
+
+form {
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    margin-right: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
