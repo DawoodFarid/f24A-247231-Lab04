@@ -5,11 +5,17 @@ form.addEventListener("submit", function(event) {
     event.preventDefault();
 
     const bill = Number(document.querySelector("#bill").value);
-    const paid = Number(document.querySelector("#paid").value);
+    const paidText = document.querySelector("#paid").value;
+
+    const paid = paidText === "" ? null : Number(paidText);
 
     const change = getChange(paid, bill);
 
-    if (paid < bill) {
+    if (paid === null) {
+        result.innerHTML = `
+            <p>Kind of paid: ${typeof paid}</p>
+        `;
+    } else if (paid < bill) {
         result.innerHTML = `
             <p>Still owed: ${Math.abs(change)}</p>
         `;
