@@ -19,6 +19,40 @@ function drawTable() {
     });
 }
 
+function updateTotal() {
+    let total = 0;
+
+    rows.forEach(row => {
+        if (typeof row.line === "number" && !Number.isNaN(row.line)) {
+            total += row.line;
+        }
+    });
+
+    document.querySelector("#total").textContent = total;
+    document.querySelector("#totalKind").textContent = typeof total;
+
+    if (rows.length > 0) {
+        const lastRow = rows[rows.length - 1];
+
+        document.querySelector("#noteKind").textContent = typeof lastRow.note;
+
+        const priceNumber = Number(lastRow.price);
+
+        document.querySelector("#priceMatch").textContent =
+            lastRow.price == priceNumber;
+
+        document.querySelector("#sameKind").textContent =
+            typeof lastRow.price === typeof priceNumber;
+
+        if (Number.isNaN(lastRow.line)) {
+            document.querySelector("#lineKind").textContent =
+                typeof lastRow.line;
+        } else {
+            document.querySelector("#lineKind").textContent = "";
+        }
+    }
+}
+
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -37,6 +71,7 @@ form.addEventListener("submit", function(event) {
     rows.push(row);
 
     drawTable();
+    updateTotal();
 
     document.querySelector("#item").value = "";
     document.querySelector("#quantity").value = "";
