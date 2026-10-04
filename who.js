@@ -1,4 +1,8 @@
-const people = [];
+const people = [
+    {
+        name: "Ali"
+    }
+];
 
 const nameBox = document.querySelector("#name");
 const hereButton = document.querySelector("#here");
@@ -47,3 +51,5 @@ outButton.addEventListener("click", function() {
     showPeople();
     nameBox.value = "";
 });
+
+showPeople();
