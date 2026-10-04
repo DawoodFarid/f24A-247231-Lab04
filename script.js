@@ -22,15 +22,15 @@ function drawTable() {
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const item = document.querySelector("#item").value;
+    const item = document.querySelector("#item").value || undefined;
     const quantity = Number(document.querySelector("#quantity").value);
-    const price = Number(document.querySelector("#price").value);
+    const price = document.querySelector("#price").value;
 
     const row = {
         item: item,
         quantity: quantity,
         price: price,
-        line: quantity * price,
+        line: quantity * Number(price),
         note: price + " " + quantity
     };
 
